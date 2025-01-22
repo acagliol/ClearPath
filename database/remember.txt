@@ -1,0 +1,9 @@
+sudo systemctl enable --now postgresql
+
+sudo systemctl status postgresql
+
+for postgresql
+
+yarn start
+
+to run
