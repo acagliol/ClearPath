@@ -1,3 +1,5 @@
+Tree
+
 ClearPath/
 ├── backend/                    # Backend-related code
 │   ├── controllers/            # Controllers for route logic
