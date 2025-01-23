@@ -30,28 +30,57 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        {/* Reference the "pages" folder and its subfolders directly */}
+        {/* Main Tab Navigation */}
         <Stack.Screen
           name="(tabs)"
           options={{
-            headerShown: false, // Hide header for the tabs layout
+            headerShown: false, // Hide header for the tab layout
           }}
         />
+        
+        {/* Authentication Screens */}
         <Stack.Screen
-          name="account"
+          name="auth"
           options={{
-            title: 'Account',
-            headerShown: false, // Hide header for account screens
+            title: 'Authentication',
+            headerShown: false, // Hide header for authentication stack
           }}
         />
+        
+        {/* Dashboard Screens */}
         <Stack.Screen
-          name="users"
+          name="dashboard"
           options={{
-            title: 'Users',
-            headerShown: false, // Hide header for user screens
+            title: 'Dashboard',
+            headerShown: false, // Managed by the dashboard layout
           }}
         />
-        <Stack.Screen name="+not-found" options={{ title: 'Not Found' }} />
+        
+        {/* Error Screens */}
+        <Stack.Screen
+          name="errors"
+          options={{
+            title: 'Error Handling',
+            headerShown: false, // Managed by the errors layout
+          }}
+        />
+
+        {/* Help Screens */}
+        <Stack.Screen
+          name="help"
+          options={{
+            title: 'Help Center',
+            headerShown: false, // Managed by the help layout
+          }}
+        />
+
+        {/* Catch-All Route for 404 Pages */}
+        <Stack.Screen
+          name="+not-found"
+          options={{
+            title: 'Not Found',
+          }}
+        />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
