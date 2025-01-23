@@ -1,4 +1,3 @@
-```plaintext
 ClearPath/
 ├── backend/                    # Backend-related code
 │   ├── controllers/            # Controllers for route logic
@@ -22,42 +21,52 @@ ClearPath/
 │   ├── index.js                # Entry point for the backend
 │   └── package.json
 ├── frontend/                   # Frontend code
-│   ├── app/                    # React Native app folder
-│   │   ├── (tabs)/             # Tab-based navigation
+│   ├── app/                    # App-specific folder for navigation and screens
+│   │   ├── (tabs)/             # Tab navigation
 │   │   │   ├── _layout.tsx
 │   │   │   ├── explore.tsx
 │   │   │   └── index.tsx
-│   │   ├── pages/              # Static or dynamic pages
-│   │   │   ├── _layout.tsx     # Layout for the pages
-│   │   │   ├── +not-found.tsx  # 404 page
-│   │   │   ├── test.tsx        # Example page
-│   │   │   ├── login.tsx       # Login page
-│   │   │   ├── register.tsx    # Registration page
-│   │   │   ├── dashboard.tsx   # Dashboard page for users
-│   │   │   ├── reports.tsx     # Page for viewing and submitting hazard reports
-│   │   │   ├── fleet.tsx       # Fleet management page
-│   │   │   ├── settings.tsx    # User settings page
-│   │   │   └── help.tsx        # Help and support page
-│   │   ├── components/         # Reusable components
-│   │   │   ├── ui/             # UI-specific components
-│   │   │   │   ├── Collapsible.tsx
-│   │   │   │   ├── ExternalLink.tsx
-│   │   │   │   ├── HapticTab.tsx
-│   │   │   │   ├── ThemedText.tsx
-│   │   │   │   ├── ThemedView.tsx
-│   │   │   │   ├── InputField.tsx    # New component for text inputs
-│   │   │   │   ├── Button.tsx        # New button component
-│   │   │   │   ├── Card.tsx          # New card component for displaying data
-│   │   │   │   ├── Modal.tsx         # New modal component
-│   │   │   │   └── Loader.tsx        # New loading spinner component
-│   │   ├── constants/          # Constants for the app
-│   │   │   └── Colors.ts
-│   │   ├── hooks/              # Custom hooks
-│   │   │   ├── useColorScheme.ts
-│   │   │   └── useThemeColor.ts
-│   │   ├── assets/             # Static assets
-│   │       ├── fonts/
-│   │       └── images/
+│   │   ├── auth/               # Authentication screens
+│   │   │   ├── _layout.tsx
+│   │   │   ├── login.tsx
+│   │   │   └── register.tsx
+│   │   ├── dashboard/          # Dashboard screens
+│   │   │   ├── _layout.tsx
+│   │   │   ├── dashboard.tsx
+│   │   │   ├── fleets.tsx
+│   │   │   └── reports.tsx
+│   │   ├── errors/             # Error screens
+│   │   │   ├── _layout.tsx
+│   │   │   └── errors.tsx
+│   │   ├── help/               # Help screen
+│   │   │   ├── _layout.tsx
+│   │   │   └── help.tsx
+│   │   ├── settings/           # Settings screen
+│   │   │   ├── _layout.tsx
+│   │   │   └── settings.tsx
+│   │   ├── _layout.tsx         # Root layout
+│   │   ├── +not-found.tsx      # Catch-all for 404s
+│   │   └── test.tsx            # Test screen
+│   ├── components/             # Reusable components
+│   │   ├── ui/                 # UI-specific components
+│   │   │   ├── Collapsible.tsx
+│   │   │   ├── ExternalLink.tsx
+│   │   │   ├── HapticTab.tsx
+│   │   │   ├── ThemedText.tsx
+│   │   │   ├── ThemedView.tsx
+│   │   │   ├── InputField.tsx  # New component for text inputs
+│   │   │   ├── Button.tsx      # New button component
+│   │   │   ├── Card.tsx        # New card component for displaying data
+│   │   │   ├── Modal.tsx       # New modal component
+│   │   │   └── Loader.tsx      # New loading spinner component
+│   ├── constants/              # Constants for the app
+│   │   └── Colors.ts
+│   ├── hooks/                  # Custom hooks
+│   │   ├── useColorScheme.ts
+│   │   └── useThemeColor.ts
+│   ├── assets/                 # Static assets
+│   │   ├── fonts/
+│   │   └── images/
 │   ├── public-mobile/          # Mobile-specific public files
 │   │   ├── splash-screen.png   # Splash screen image for mobile
 │   │   ├── app-icon.png        # App icon for mobile
@@ -94,4 +103,3 @@ ClearPath/
 │   └── mapbox/                 # Mapbox integration
 │       └── mapboxConfig.js
 └── README.md                   # Project documentation
-```
