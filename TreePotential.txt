@@ -1,0 +1,97 @@
+```plaintext
+ClearPath/
+├── backend/                    # Backend-related code
+│   ├── controllers/            # Controllers for route logic
+│   │   ├── userController.js
+│   │   ├── fleetController.js
+│   │   └── hazardController.js
+│   ├── routes/                 # API route definitions
+│   │   ├── userRoutes.js
+│   │   ├── fleetRoutes.js
+│   │   └── hazardRoutes.js
+│   ├── models/                 # Database models (PostgreSQL)
+│   │   ├── User.js
+│   │   ├── Fleet.js
+│   │   └── Hazard.js
+│   ├── middleware/             # Custom middleware for authentication, validation, etc.
+│   │   ├── authMiddleware.js
+│   │   └── errorMiddleware.js
+│   ├── config/                 # Configuration files
+│   │   ├── db.js               # Database connection logic
+│   │   └── serverConfig.js     # General server settings
+│   ├── index.js                # Entry point for the backend
+│   └── package.json
+├── frontend/                   # Frontend code
+│   ├── app/                    # React Native app folder
+│   │   ├── (tabs)/             # Tab-based navigation
+│   │   │   ├── _layout.tsx
+│   │   │   ├── explore.tsx
+│   │   │   └── index.tsx
+│   │   ├── pages/              # Static or dynamic pages
+│   │   │   ├── _layout.tsx     # Layout for the pages
+│   │   │   ├── +not-found.tsx  # 404 page
+│   │   │   ├── test.tsx        # Example page
+│   │   │   ├── login.tsx       # Login page
+│   │   │   ├── register.tsx    # Registration page
+│   │   │   ├── dashboard.tsx   # Dashboard page for users
+│   │   │   ├── reports.tsx     # Page for viewing and submitting hazard reports
+│   │   │   ├── fleet.tsx       # Fleet management page
+│   │   │   ├── settings.tsx    # User settings page
+│   │   │   └── help.tsx        # Help and support page
+│   │   ├── components/         # Reusable components
+│   │   │   ├── ui/             # UI-specific components
+│   │   │   │   ├── Collapsible.tsx
+│   │   │   │   ├── ExternalLink.tsx
+│   │   │   │   ├── HapticTab.tsx
+│   │   │   │   ├── ThemedText.tsx
+│   │   │   │   ├── ThemedView.tsx
+│   │   │   │   ├── InputField.tsx    # New component for text inputs
+│   │   │   │   ├── Button.tsx        # New button component
+│   │   │   │   ├── Card.tsx          # New card component for displaying data
+│   │   │   │   ├── Modal.tsx         # New modal component
+│   │   │   │   └── Loader.tsx        # New loading spinner component
+│   │   ├── constants/          # Constants for the app
+│   │   │   └── Colors.ts
+│   │   ├── hooks/              # Custom hooks
+│   │   │   ├── useColorScheme.ts
+│   │   │   └── useThemeColor.ts
+│   │   ├── assets/             # Static assets
+│   │       ├── fonts/
+│   │       └── images/
+│   ├── public-mobile/          # Mobile-specific public files
+│   │   ├── splash-screen.png   # Splash screen image for mobile
+│   │   ├── app-icon.png        # App icon for mobile
+│   │   └── styles.css          # Mobile-specific styles
+│   ├── public-web/             # Web-specific public files
+│   │   ├── favicon.ico         # Favicon for the web app
+│   │   ├── index.html          # Main HTML file for the web app
+│   │   └── styles.css          # Web-specific styles
+│   ├── scripts/                # Utility scripts
+│   │   └── reset-project.js
+│   ├── package.json
+│   └── tsconfig.json           # TypeScript configuration
+├── middleware/                 # Middleware services (GraphQL)
+│   ├── schema/                 # GraphQL schemas
+│   │   ├── userSchema.js
+│   │   ├── fleetSchema.js
+│   │   └── hazardSchema.js
+│   ├── resolvers/              # GraphQL resolvers
+│   │   ├── userResolvers.js
+│   │   ├── fleetResolvers.js
+│   │   └── hazardResolvers.js
+│   └── index.js                # Middleware entry point
+├── database/                   # Database-related files
+│   ├── migrations/             # SQL migration scripts
+│   │   ├── 001_create_users.sql
+│   │   ├── 002_create_fleets.sql
+│   │   └── 003_create_hazards.sql
+│   ├── seeds/                  # Seed data for testing
+│   ├── schema.sql              # Database schema definition
+│   └── config.js               # Database configuration
+├── cloud/                      # Cloud configurations and services
+│   ├── aws/                    # AWS-specific settings
+│   │   └── s3Config.js
+│   └── mapbox/                 # Mapbox integration
+│       └── mapboxConfig.js
+└── README.md                   # Project documentation
+```
