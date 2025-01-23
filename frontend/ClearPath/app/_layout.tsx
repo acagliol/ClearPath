@@ -30,8 +30,28 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+        {/* Reference the "pages" folder and its subfolders directly */}
+        <Stack.Screen
+          name="(tabs)"
+          options={{
+            headerShown: false, // Hide header for the tabs layout
+          }}
+        />
+        <Stack.Screen
+          name="account"
+          options={{
+            title: 'Account',
+            headerShown: false, // Hide header for account screens
+          }}
+        />
+        <Stack.Screen
+          name="users"
+          options={{
+            title: 'Users',
+            headerShown: false, // Hide header for user screens
+          }}
+        />
+        <Stack.Screen name="+not-found" options={{ title: 'Not Found' }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
