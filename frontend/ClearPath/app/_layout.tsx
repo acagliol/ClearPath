@@ -16,31 +16,31 @@ export default function RootLayout() {
         }}
       />
       <Stack.Screen
-        name="auth/_layout"
+        name="auth/"
         options={{
           headerShown: false, // Hides header for nested auth screens
         }}
       />
       <Stack.Screen
-        name="dashboard/_layout"
+        name="dashboard/"
         options={{
           headerShown: false, // Hides header for dashboard screens
         }}
       />
       <Stack.Screen
-        name="errors/_layout"
+        name="errors/"
         options={{
           headerShown: false, // Hides header for error screens
         }}
       />
       <Stack.Screen
-        name="help/_layout"
+        name="help/"
         options={{
           title: "Help",
         }}
       />
       <Stack.Screen
-        name="settings/_layout"
+        name="settings/"
         options={{
           title: "Settings",
         }}
