@@ -1,0 +1,5 @@
+to run the frontend
+npx expo start
+
+then to pull its:
+git checkout branchname
