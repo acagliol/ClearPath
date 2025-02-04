@@ -1,214 +1,340 @@
 import React from 'react';
 
-// Inline style objects for our components
 const styles = {
-  container: {
-    fontFamily: "'Arial', sans-serif",
+  body: {
     margin: 0,
-    padding: 0,
-    boxSizing: 'border-box' as 'border-box',
+    fontFamily: "'Roboto', sans-serif",
+    backgroundColor: '#fff',
     color: '#333',
-  },
+    minHeight: '100vh',
+    overflowY: 'auto', // Enable scrolling for the entire page
+  } as React.CSSProperties,
+  container: {
+    width: '100%', // No overflow property here to allow natural scrolling
+  } as React.CSSProperties,
+  /* Header Styles */
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '20px 40px',
+    padding: '20px 60px',
+    borderBottom: '1px solid #ddd',
+    position: 'sticky',
+    top: 0,
     backgroundColor: '#fff',
-    borderBottom: '1px solid #eee',
-  },
+    zIndex: 1000,
+  } as React.CSSProperties,
   logo: {
-    fontSize: '24px',
-    fontWeight: 'bold' as 'bold',
-    color: '#0077cc',
-  },
+    fontSize: '28px',
+    fontWeight: 700,
+    color: '#1a1a1a',
+  } as React.CSSProperties,
   nav: {
     display: 'flex',
-    gap: '20px',
-  },
+    gap: '30px',
+  } as React.CSSProperties,
   navItem: {
-    cursor: 'pointer',
-    fontSize: '16px',
-    color: '#333',
     textDecoration: 'none',
-  },
+    color: '#333',
+    fontSize: '16px',
+    fontWeight: 500,
+  } as React.CSSProperties,
+  /* Hero Section Styles */
   hero: {
-    backgroundColor: '#f5f5f5',
-    padding: '100px 40px',
-    textAlign: 'center' as 'center',
-  },
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '120px 60px',
+    background: 'linear-gradient(135deg, #F0F0F0 0%, #FFFFFF 100%)',
+  } as React.CSSProperties,
+  heroText: {
+    maxWidth: '50%',
+  } as React.CSSProperties,
   heroTitle: {
-    fontSize: '48px',
-    margin: '0 0 20px',
-  },
+    fontSize: '56px',
+    fontWeight: 700,
+    marginBottom: '20px',
+    color: '#222',
+  } as React.CSSProperties,
   heroSubtitle: {
+    fontSize: '22px',
+    lineHeight: 1.5,
+    color: '#555',
+    marginBottom: '40px',
+  } as React.CSSProperties,
+  heroButton: {
     fontSize: '20px',
-    margin: '0 0 40px',
-  },
-  ctaButton: {
-    fontSize: '18px',
-    padding: '15px 30px',
-    backgroundColor: '#0077cc',
+    padding: '18px 36px',
+    backgroundColor: '#1a73e8',
     color: '#fff',
     border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-  },
-  featuresSection: {
-    padding: '80px 40px',
-    backgroundColor: '#fff',
-  },
-  featuresTitle: {
-    textAlign: 'center' as 'center',
-    fontSize: '36px',
-    marginBottom: '40px',
-  },
-  featuresGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    gap: '20px',
-  },
-  featureCard: {
-    padding: '20px',
-    border: '1px solid #eee',
     borderRadius: '8px',
-    textAlign: 'center' as 'center',
-  },
-  featureImage: {
-    width: '100%',
-    height: '150px',
-    objectFit: 'cover' as 'cover',
-    marginBottom: '20px',
+    cursor: 'pointer',
+  } as React.CSSProperties,
+  heroImage: {
+    width: '45%',
+    height: '450px',
     backgroundColor: '#ddd',
-  },
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '10px',
+  } as React.CSSProperties,
+  heroImageText: {
+    fontSize: '18px',
+    color: '#888',
+  } as React.CSSProperties,
+  /* Features Section Styles */
+  features: {
+    padding: '100px 60px',
+    backgroundColor: '#fafafa',
+  } as React.CSSProperties,
+  sectionTitle: {
+    textAlign: 'center' as const,
+    fontSize: '42px',
+    fontWeight: 600,
+    marginBottom: '60px',
+  } as React.CSSProperties,
+  featureGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '40px',
+  } as React.CSSProperties,
+  featureCard: {
+    padding: '30px',
+    backgroundColor: '#fff',
+    borderRadius: '10px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+    textAlign: 'center' as const,
+  } as React.CSSProperties,
+  featurePlaceholder: {
+    width: '100%',
+    height: '250px',
+    backgroundColor: '#ccc',
+    marginBottom: '20px',
+    borderRadius: '8px',
+  } as React.CSSProperties,
   featureTitle: {
-    fontSize: '20px',
-    margin: '0 0 10px',
-  },
-  featureDescription: {
+    fontSize: '24px',
+    fontWeight: 600,
+    marginBottom: '10px',
+  } as React.CSSProperties,
+  featureDesc: {
     fontSize: '16px',
     color: '#666',
-  },
-  footer: {
-    backgroundColor: '#333',
+  } as React.CSSProperties,
+  /* About Section Styles */
+  about: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '100px 60px',
+    backgroundColor: '#fff',
+    gap: '40px',
+  } as React.CSSProperties,
+  aboutText: {
+    flex: 1,
+  } as React.CSSProperties,
+  aboutImage: {
+    flex: 1,
+    height: '400px',
+    backgroundColor: '#ddd',
+    borderRadius: '10px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  } as React.CSSProperties,
+  aboutImageText: {
+    fontSize: '18px',
+    color: '#888',
+  } as React.CSSProperties,
+  aboutTitle: {
+    fontSize: '36px',
+    fontWeight: 700,
+    marginBottom: '20px',
+  } as React.CSSProperties,
+  aboutDesc: {
+    fontSize: '18px',
+    lineHeight: 1.6,
+    color: '#555',
+  } as React.CSSProperties,
+  /* Call-to-Action (CTA) Section Styles */
+  cta: {
+    padding: '100px 60px',
+    backgroundColor: '#1a73e8',
     color: '#fff',
-    padding: '40px',
-    textAlign: 'center' as 'center',
-  },
+    textAlign: 'center' as const,
+  } as React.CSSProperties,
+  ctaTitle: {
+    fontSize: '42px',
+    fontWeight: 700,
+    marginBottom: '20px',
+  } as React.CSSProperties,
+  ctaDesc: {
+    fontSize: '20px',
+    lineHeight: 1.5,
+    marginBottom: '40px',
+  } as React.CSSProperties,
+  ctaButton: {
+    fontSize: '20px',
+    padding: '18px 36px',
+    backgroundColor: '#fff',
+    color: '#1a73e8',
+    border: 'none',
+    borderRadius: '8px',
+    cursor: 'pointer',
+  } as React.CSSProperties,
+  /* Footer Section Styles */
+  footer: {
+    padding: '60px',
+    backgroundColor: '#222',
+    color: '#fff',
+    textAlign: 'center' as const,
+  } as React.CSSProperties,
   footerLinks: {
     display: 'flex',
     justifyContent: 'center',
-    gap: '20px',
+    gap: '30px',
     marginBottom: '20px',
-  },
+  } as React.CSSProperties,
   footerLink: {
-    color: '#fff',
+    color: '#bbb',
     textDecoration: 'none',
     fontSize: '14px',
-  },
-  footerCopy: {
-    fontSize: '14px',
-  },
+  } as React.CSSProperties,
 };
 
-// Header component replicating the top navigation
+/* Header Component */
 const Header: React.FC = () => (
   <header style={styles.header}>
-    <div style={styles.logo}>Trucker Path</div>
+    <div style={styles.logo}>ClearPath</div>
     <nav style={styles.nav}>
-      <a style={styles.navItem} href="#">For Drivers</a>
-      <a style={styles.navItem} href="#">For Fleets</a>
-      <a style={styles.navItem} href="#">For Brokers</a>
-      <a style={styles.navItem} href="#">Company</a>
-      <a style={styles.navItem} href="#">Blog</a>
+      <a style={styles.navItem} href="#hero">Home</a>
+      <a style={styles.navItem} href="#features">Features</a>
+      <a style={styles.navItem} href="#about">About</a>
+      <a style={styles.navItem} href="#cta">Get Started</a>
+      <a style={styles.navItem} href="#footer">Contact</a>
     </nav>
   </header>
 );
 
-// Hero section with title, subtitle and call-to-action button
+/* Hero Section Component */
 const HeroSection: React.FC = () => (
-  <section style={styles.hero}>
-    <h1 style={styles.heroTitle}>America's Most Popular Truck Navigation App</h1>
-    <p style={styles.heroSubtitle}>
-      Truck-safe routing, real-time updates, and fuel savings for truckers on the road.
+  <section id="hero" style={styles.hero}>
+    <div style={styles.heroText}>
+      <h1 style={styles.heroTitle}>ClearPath Navigation</h1>
+      <p style={styles.heroSubtitle}>
+        Experience advanced, truck-specific navigation with real-time updates, hazard reporting, and optimized routes.
+      </p>
+      <button style={styles.heroButton}>Optimize Your Routes Today</button>
+    </div>
+    <div style={styles.heroImage}>
+      <span style={styles.heroImageText}>Image Placeholder (450px height)</span>
+    </div>
+  </section>
+);
+
+/* Features Section Component */
+const FeaturesSection: React.FC = () => {
+  const featuresData = [
+    {
+      title: 'Navigation & Traffic',
+      description: 'Turn-by-turn directions, real-time traffic updates, and alternate routes tailored for commercial vehicles.',
+    },
+    {
+      title: 'Customizable Route Planning',
+      description: 'Input truck dimensions and restrictions to generate routes that avoid low-clearance and restricted areas.',
+    },
+    {
+      title: 'Crowdsourced Hazard Reporting',
+      description: 'Drivers report hazards, accidents, and closures—with community voting to ensure accuracy.',
+    },
+    {
+      title: 'Advanced Data Insights',
+      description: 'Analyze historical trends, high braking zones, and fleet metrics to optimize performance.',
+    },
+    {
+      title: 'Sensor Integration',
+      description: 'Real-time overhead clearance data from roof-mounted sensors for safe passage under low bridges.',
+    },
+    {
+      title: 'Community Communication',
+      description: 'Built-in chat and forums let drivers share insights, weather alerts, and route tips.',
+    },
+  ];
+
+  return (
+    <section id="features" style={styles.features}>
+      <h2 style={styles.sectionTitle}>Key Features</h2>
+      <div style={styles.featureGrid}>
+        {featuresData.map((feature, index) => (
+          <div key={index} style={styles.featureCard}>
+            <div style={styles.featurePlaceholder}>
+              <span style={{ lineHeight: '250px', color: '#888' }}>
+                Image Placeholder (250px height)
+              </span>
+            </div>
+            <h3 style={styles.featureTitle}>{feature.title}</h3>
+            <p style={styles.featureDesc}>{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+/* About Section Component */
+const AboutSection: React.FC = () => (
+  <section id="about" style={styles.about}>
+    <div style={styles.aboutText}>
+      <h2 style={styles.aboutTitle}>About ClearPath</h2>
+      <p style={styles.aboutDesc}>
+        ClearPath is designed specifically for the trucking industry—addressing unique challenges with truck-specific routing, real-time hazard alerts, and community-driven insights. Our system factors in vehicle dimensions, weight, and restrictions to provide safe and optimized routes for every journey.
+      </p>
+      <p style={styles.aboutDesc}>
+        Leveraging advanced sensor technology and a vibrant driver community, ClearPath ensures that fleet managers and truck drivers always have the information they need to navigate efficiently and safely.
+      </p>
+    </div>
+    <div style={styles.aboutImage}>
+      <span style={styles.aboutImageText}>Image Placeholder (400px height)</span>
+    </div>
+  </section>
+);
+
+/* Call-to-Action (CTA) Section Component */
+const CTASection: React.FC = () => (
+  <section id="cta" style={styles.cta}>
+    <h2 style={styles.ctaTitle}>Ready to Transform Your Trucking Experience?</h2>
+    <p style={styles.ctaDesc}>
+      Join thousands of drivers and fleet managers who trust ClearPath for optimized routes, enhanced safety, and real-time updates.
     </p>
-    <button style={styles.ctaButton}>Get A Demo</button>
+    <button style={styles.ctaButton}>Get Started Now</button>
   </section>
 );
 
-// Define a type for our feature items
-interface Feature {
-  title: string;
-  description: string;
-  imageUrl?: string;
-}
-
-// Sample feature data with placeholder images
-const featuresData: Feature[] = [
-  {
-    title: 'Truck Navigation',
-    description: 'Safe routing for commercial trucks on the road.',
-    imageUrl: 'https://via.placeholder.com/300x150',
-  },
-  {
-    title: 'Discounted Fuel Deals',
-    description: 'Save money every time you fuel at participating stops.',
-    imageUrl: 'https://via.placeholder.com/300x150',
-  },
-  {
-    title: 'Load Board',
-    description: 'Find and post loads quickly and efficiently.',
-    imageUrl: 'https://via.placeholder.com/300x150',
-  },
-  {
-    title: 'Driver Community',
-    description: 'Real-time, crowdsourced road intelligence and updates.',
-    imageUrl: 'https://via.placeholder.com/300x150',
-  },
-];
-
-// Features section displaying a grid of feature cards
-const FeaturesSection: React.FC = () => (
-  <section style={styles.featuresSection}>
-    <h2 style={styles.featuresTitle}>Our Solutions</h2>
-    <div style={styles.featuresGrid}>
-      {featuresData.map((feature, index) => (
-        <div key={index} style={styles.featureCard}>
-          <img
-            src={feature.imageUrl}
-            alt={feature.title}
-            style={styles.featureImage}
-          />
-          <h3 style={styles.featureTitle}>{feature.title}</h3>
-          <p style={styles.featureDescription}>{feature.description}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-);
-
-// Footer component with placeholder links and company info
+/* Footer Component */
 const Footer: React.FC = () => (
-  <footer style={styles.footer}>
+  <footer id="footer" style={styles.footer}>
     <div style={styles.footerLinks}>
-      <a style={styles.footerLink} href="#">Help Center</a>
-      <a style={styles.footerLink} href="#">Terms & Privacy Policy</a>
-      <a style={styles.footerLink} href="#">Contact Us</a>
+      <a style={styles.footerLink} href="#privacy">Privacy Policy</a>
+      <a style={styles.footerLink} href="#terms">Terms of Service</a>
+      <a style={styles.footerLink} href="#contact">Contact Us</a>
     </div>
-    <div style={styles.footerCopy}>
-      &copy; {new Date().getFullYear()} Trucker Path Inc.
-    </div>
+    <p>&copy; {new Date().getFullYear()} ClearPath. All Rights Reserved.</p>
   </footer>
 );
 
-// HomePage combines all the sections together
+/* Main HomePage Component */
 const HomePage: React.FC = () => {
   return (
-    <div style={styles.container}>
-      <Header />
-      <HeroSection />
-      <FeaturesSection />
-      <Footer />
+    <div style={styles.body}>
+      <div style={styles.container}>
+        <Header />
+        <HeroSection />
+        <FeaturesSection />
+        <AboutSection />
+        <CTASection />
+        <Footer />
+      </div>
     </div>
   );
 };
