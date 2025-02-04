@@ -45,6 +45,13 @@ export default function RootLayout() {
           title: "Settings",
         }}
       />
+      <Stack.Screen
+        name="home"
+        options={{
+          title: "Home",
+        }}
+      />
     </Stack>
+
   );
 }
