@@ -1,5 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+/* Dropdown Component */
+interface DropdownProps {
+  title: string;
+  items: string[];
+}
+const Dropdown: React.FC<DropdownProps> = ({ title, items }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      style={{ position: 'relative', display: 'inline-block', padding: '0 10px', cursor: 'pointer' }}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <div>{title}</div>
+      {open && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            backgroundColor: '#fff',
+            boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+            zIndex: 1000,
+            minWidth: '150px',
+          }}
+        >
+          {items.map((item, index) => (
+            <div key={index} style={{ padding: '10px', borderBottom: index < items.length - 1 ? '1px solid #eee' : 'none' }}>
+              {item}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+/* Styles */
 const styles = {
   body: {
     margin: 0,
@@ -10,7 +49,7 @@ const styles = {
     overflowY: 'auto', // Enable scrolling for the entire page
   } as React.CSSProperties,
   container: {
-    width: '100%', // No overflow property here to allow natural scrolling
+    width: '100%',
   } as React.CSSProperties,
   /* Header Styles */
   header: {
@@ -32,12 +71,7 @@ const styles = {
   nav: {
     display: 'flex',
     gap: '30px',
-  } as React.CSSProperties,
-  navItem: {
-    textDecoration: 'none',
-    color: '#333',
-    fontSize: '16px',
-    fontWeight: 500,
+    alignItems: 'center',
   } as React.CSSProperties,
   /* Hero Section Styles */
   hero: {
@@ -175,12 +209,13 @@ const styles = {
     marginBottom: '40px',
   } as React.CSSProperties,
   ctaButton: {
-    fontSize: '20px',
-    padding: '18px 36px',
-    backgroundColor: '#fff',
-    color: '#1a73e8',
+    padding: '10px 20px',
+    backgroundColor: '#1a73e8',
+    color: '#fff',
     border: 'none',
-    borderRadius: '8px',
+    borderRadius: '4px',
+    fontSize: '14px',
+    fontWeight: 600,
     cursor: 'pointer',
   } as React.CSSProperties,
   /* Footer Section Styles */
@@ -203,19 +238,60 @@ const styles = {
   } as React.CSSProperties,
 };
 
-/* Header Component */
-const Header: React.FC = () => (
-  <header style={styles.header}>
-    <div style={styles.logo}>ClearPath</div>
-    <nav style={styles.nav}>
-      <a style={styles.navItem} href="#hero">Home</a>
-      <a style={styles.navItem} href="#features">Features</a>
-      <a style={styles.navItem} href="#about">About</a>
-      <a style={styles.navItem} href="#cta">Get Started</a>
-      <a style={styles.navItem} href="#footer">Contact</a>
-    </nav>
-  </header>
-);
+/* Updated Header Component with Dropdown Menus */
+const Header: React.FC = () => {
+  return (
+    <header style={styles.header}>
+      <div style={styles.logo}>Clear Path</div>
+      <nav style={styles.nav}>
+        <Dropdown
+          title="For Drivers"
+          items={[
+            "Truck Navigation for Drivers",
+            "Over-the-Road Map",
+            "Marketplace",
+            "Discounted Fuel Deals",
+            "Find Loads",
+            "Fuel Prices",
+            "Driver Community",
+          ]}
+        />
+        <Dropdown
+          title="For Fleets"
+          items={[
+            "Truck Navigation for Fleets",
+            "Marketplace",
+            "Fleet Management",
+            "Fleet Fuel Payments",
+          ]}
+        />
+        <Dropdown
+          title="For Brokers"
+          items={[
+            "Post Freight",
+            "Find Carriers",
+            "Trucker Path for Brokerages",
+            "Freight Market Data",
+          ]}
+        />
+        <Dropdown
+          title="Company"
+          items={["Our Story", "Help Center", "Blog", "Contact Us"]}
+        />
+        <Dropdown
+          title="Partners"
+          items={[
+            "Fuel Network",
+            "Integration Partners",
+            "Local Business Partners",
+            "Advertise With Us",
+          ]}
+        />
+        <button style={styles.ctaButton}>GET A DEMO</button>
+      </nav>
+    </header>
+  );
+};
 
 /* Hero Section Component */
 const HeroSection: React.FC = () => (
@@ -238,27 +314,33 @@ const FeaturesSection: React.FC = () => {
   const featuresData = [
     {
       title: 'Navigation & Traffic',
-      description: 'Turn-by-turn directions, real-time traffic updates, and alternate routes tailored for commercial vehicles.',
+      description:
+        'Turn-by-turn directions, real-time traffic updates, and alternate routes tailored for commercial vehicles.',
     },
     {
       title: 'Customizable Route Planning',
-      description: 'Input truck dimensions and restrictions to generate routes that avoid low-clearance and restricted areas.',
+      description:
+        'Input truck dimensions and restrictions to generate routes that avoid low-clearance and restricted areas.',
     },
     {
       title: 'Crowdsourced Hazard Reporting',
-      description: 'Drivers report hazards, accidents, and closures—with community voting to ensure accuracy.',
+      description:
+        'Drivers report hazards, accidents, and closures—with community voting to ensure accuracy.',
     },
     {
       title: 'Advanced Data Insights',
-      description: 'Analyze historical trends, high braking zones, and fleet metrics to optimize performance.',
+      description:
+        'Analyze historical trends, high braking zones, and fleet metrics to optimize performance.',
     },
     {
       title: 'Sensor Integration',
-      description: 'Real-time overhead clearance data from roof-mounted sensors for safe passage under low bridges.',
+      description:
+        'Real-time overhead clearance data from roof-mounted sensors for safe passage under low bridges.',
     },
     {
       title: 'Community Communication',
-      description: 'Built-in chat and forums let drivers share insights, weather alerts, and route tips.',
+      description:
+        'Built-in chat and forums let drivers share insights, weather alerts, and route tips.',
     },
   ];
 
@@ -288,7 +370,8 @@ const AboutSection: React.FC = () => (
     <div style={styles.aboutText}>
       <h2 style={styles.aboutTitle}>About ClearPath</h2>
       <p style={styles.aboutDesc}>
-        ClearPath is designed specifically for the trucking industry—addressing unique challenges with truck-specific routing, real-time hazard alerts, and community-driven insights. Our system factors in vehicle dimensions, weight, and restrictions to provide safe and optimized routes for every journey.
+        ClearPath is designed specifically for the trucking industry—addressing unique challenges with truck-specific routing, real-time hazard alerts, and community-driven insights.
+        Our system factors in vehicle dimensions, weight, and restrictions to provide safe and optimized routes for every journey.
       </p>
       <p style={styles.aboutDesc}>
         Leveraging advanced sensor technology and a vibrant driver community, ClearPath ensures that fleet managers and truck drivers always have the information they need to navigate efficiently and safely.

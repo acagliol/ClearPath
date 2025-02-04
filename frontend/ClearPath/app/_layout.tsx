@@ -6,7 +6,7 @@ export default function RootLayout() {
       <Stack.Screen
         name="index"
         options={{
-          title: "Home",
+          title: "Index",
         }}
       />
       <Stack.Screen
@@ -42,6 +42,7 @@ export default function RootLayout() {
       <Stack.Screen
         name="home"
         options={{
+          headerShown: false,
           title: "Home",
         }}
       />
