@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Platform } from 'react-native';
 
 /* Dropdown Component */
 interface DropdownProps {
@@ -238,6 +239,8 @@ const styles = {
   } as React.CSSProperties,
 };
 
+
+
 /* Updated Header Component with Dropdown Menus */
 const Header: React.FC = () => {
   return (
@@ -423,3 +426,4 @@ const HomePage: React.FC = () => {
 };
 
 export default HomePage;
+
