@@ -14,5 +14,8 @@
   "jest": {
     "preset": "jest-expo"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "expo-linear-gradient": "~14.0.2"
+  }
 }

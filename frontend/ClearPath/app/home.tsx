@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import Navbar from "./navbar";
-import Footer from "./footer";
+import Navbar from "./shared/navbar";
+import Footer from "./shared/footer";
 
 const HeroSection: React.FC = () => (
   <section style={homeStyles.hero}>
