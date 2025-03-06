@@ -4,3 +4,9 @@ npx expo start
 
 then to pull its:
 git checkout branchname
+
+
+/ note from 3/6/25
+install the npm install expo-linear-gradient for product page css, in ClearPath/frontend/ClearPath/
+
+also need to update layout.tsx and finish the product side and the whole company side
