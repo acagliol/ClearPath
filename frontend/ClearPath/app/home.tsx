@@ -1,365 +1,68 @@
-import React, { useState } from 'react';
-import { Platform } from 'react-native';
+"use client";
 
-/* Dropdown Component */
-interface DropdownProps {
-  title: string;
-  items: string[];
-}
-const Dropdown: React.FC<DropdownProps> = ({ title, items }) => {
-  const [open, setOpen] = useState(false);
+import React from "react";
+import Navbar from "./navbar";
+import Footer from "./footer";
 
-  return (
-    <div
-      style={{ position: 'relative', display: 'inline-block', padding: '0 10px', cursor: 'pointer' }}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <div>{title}</div>
-      {open && (
-        <div
-          style={{
-            position: 'absolute',
-            top: '100%',
-            left: 0,
-            backgroundColor: '#fff',
-            boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-            zIndex: 1000,
-            minWidth: '150px',
-          }}
-        >
-          {items.map((item, index) => (
-            <div key={index} style={{ padding: '10px', borderBottom: index < items.length - 1 ? '1px solid #eee' : 'none' }}>
-              {item}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
-
-/* Styles */
-const styles = {
-  body: {
-    margin: 0,
-    fontFamily: "'Roboto', sans-serif",
-    backgroundColor: '#fff',
-    color: '#333',
-    minHeight: '100vh',
-    overflowY: 'auto', // Enable scrolling for the entire page
-  } as React.CSSProperties,
-  container: {
-    width: '100%',
-  } as React.CSSProperties,
-  /* Header Styles */
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '20px 60px',
-    borderBottom: '1px solid #ddd',
-    position: 'sticky',
-    top: 0,
-    backgroundColor: '#fff',
-    zIndex: 1000,
-  } as React.CSSProperties,
-  logo: {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: '#1a1a1a',
-  } as React.CSSProperties,
-  nav: {
-    display: 'flex',
-    gap: '30px',
-    alignItems: 'center',
-  } as React.CSSProperties,
-  /* Hero Section Styles */
-  hero: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '120px 60px',
-    background: 'linear-gradient(135deg, #F0F0F0 0%, #FFFFFF 100%)',
-  } as React.CSSProperties,
-  heroText: {
-    maxWidth: '50%',
-  } as React.CSSProperties,
-  heroTitle: {
-    fontSize: '56px',
-    fontWeight: 700,
-    marginBottom: '20px',
-    color: '#222',
-  } as React.CSSProperties,
-  heroSubtitle: {
-    fontSize: '22px',
-    lineHeight: 1.5,
-    color: '#555',
-    marginBottom: '40px',
-  } as React.CSSProperties,
-  heroButton: {
-    fontSize: '20px',
-    padding: '18px 36px',
-    backgroundColor: '#1a73e8',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
-  } as React.CSSProperties,
-  heroImage: {
-    width: '45%',
-    height: '450px',
-    backgroundColor: '#ddd',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '10px',
-  } as React.CSSProperties,
-  heroImageText: {
-    fontSize: '18px',
-    color: '#888',
-  } as React.CSSProperties,
-  /* Features Section Styles */
-  features: {
-    padding: '100px 60px',
-    backgroundColor: '#fafafa',
-  } as React.CSSProperties,
-  sectionTitle: {
-    textAlign: 'center' as const,
-    fontSize: '42px',
-    fontWeight: 600,
-    marginBottom: '60px',
-  } as React.CSSProperties,
-  featureGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '40px',
-  } as React.CSSProperties,
-  featureCard: {
-    padding: '30px',
-    backgroundColor: '#fff',
-    borderRadius: '10px',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-    textAlign: 'center' as const,
-  } as React.CSSProperties,
-  featurePlaceholder: {
-    width: '100%',
-    height: '250px',
-    backgroundColor: '#ccc',
-    marginBottom: '20px',
-    borderRadius: '8px',
-  } as React.CSSProperties,
-  featureTitle: {
-    fontSize: '24px',
-    fontWeight: 600,
-    marginBottom: '10px',
-  } as React.CSSProperties,
-  featureDesc: {
-    fontSize: '16px',
-    color: '#666',
-  } as React.CSSProperties,
-  /* About Section Styles */
-  about: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '100px 60px',
-    backgroundColor: '#fff',
-    gap: '40px',
-  } as React.CSSProperties,
-  aboutText: {
-    flex: 1,
-  } as React.CSSProperties,
-  aboutImage: {
-    flex: 1,
-    height: '400px',
-    backgroundColor: '#ddd',
-    borderRadius: '10px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  } as React.CSSProperties,
-  aboutImageText: {
-    fontSize: '18px',
-    color: '#888',
-  } as React.CSSProperties,
-  aboutTitle: {
-    fontSize: '36px',
-    fontWeight: 700,
-    marginBottom: '20px',
-  } as React.CSSProperties,
-  aboutDesc: {
-    fontSize: '18px',
-    lineHeight: 1.6,
-    color: '#555',
-  } as React.CSSProperties,
-  /* Call-to-Action (CTA) Section Styles */
-  cta: {
-    padding: '100px 60px',
-    backgroundColor: '#1a73e8',
-    color: '#fff',
-    textAlign: 'center' as const,
-  } as React.CSSProperties,
-  ctaTitle: {
-    fontSize: '42px',
-    fontWeight: 700,
-    marginBottom: '20px',
-  } as React.CSSProperties,
-  ctaDesc: {
-    fontSize: '20px',
-    lineHeight: 1.5,
-    marginBottom: '40px',
-  } as React.CSSProperties,
-  ctaButton: {
-    padding: '10px 20px',
-    backgroundColor: '#1a73e8',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '4px',
-    fontSize: '14px',
-    fontWeight: 600,
-    cursor: 'pointer',
-  } as React.CSSProperties,
-  /* Footer Section Styles */
-  footer: {
-    padding: '60px',
-    backgroundColor: '#222',
-    color: '#fff',
-    textAlign: 'center' as const,
-  } as React.CSSProperties,
-  footerLinks: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '30px',
-    marginBottom: '20px',
-  } as React.CSSProperties,
-  footerLink: {
-    color: '#bbb',
-    textDecoration: 'none',
-    fontSize: '14px',
-  } as React.CSSProperties,
-};
-
-
-
-/* Updated Header Component with Dropdown Menus */
-const Header: React.FC = () => {
-  return (
-    <header style={styles.header}>
-      <div style={styles.logo}>Clear Path</div>
-      <nav style={styles.nav}>
-        <Dropdown
-          title="For Drivers"
-          items={[
-            "Truck Navigation for Drivers",
-            "Over-the-Road Map",
-            "Marketplace",
-            "Discounted Fuel Deals",
-            "Find Loads",
-            "Fuel Prices",
-            "Driver Community",
-          ]}
-        />
-        <Dropdown
-          title="For Fleets"
-          items={[
-            "Truck Navigation for Fleets",
-            "Marketplace",
-            "Fleet Management",
-            "Fleet Fuel Payments",
-          ]}
-        />
-        <Dropdown
-          title="For Brokers"
-          items={[
-            "Post Freight",
-            "Find Carriers",
-            "Trucker Path for Brokerages",
-            "Freight Market Data",
-          ]}
-        />
-        <Dropdown
-          title="Company"
-          items={["Our Story", "Help Center", "Blog", "Contact Us"]}
-        />
-        <Dropdown
-          title="Partners"
-          items={[
-            "Fuel Network",
-            "Integration Partners",
-            "Local Business Partners",
-            "Advertise With Us",
-          ]}
-        />
-        <button style={styles.ctaButton}>GET A DEMO</button>
-      </nav>
-    </header>
-  );
-};
-
-/* Hero Section Component */
 const HeroSection: React.FC = () => (
-  <section id="hero" style={styles.hero}>
-    <div style={styles.heroText}>
-      <h1 style={styles.heroTitle}>ClearPath Navigation</h1>
-      <p style={styles.heroSubtitle}>
+  <section style={homeStyles.hero}>
+    <div style={homeStyles.heroText}>
+      <h1 style={homeStyles.heroTitle}>ClearPath Navigation</h1>
+      <p style={homeStyles.heroSubtitle}>
         Experience advanced, truck-specific navigation with real-time updates, hazard reporting, and optimized routes.
       </p>
-      <button style={styles.heroButton}>Optimize Your Routes Today</button>
+      <button style={homeStyles.heroButton}>Optimize Your Routes Today</button>
     </div>
-    <div style={styles.heroImage}>
-      <span style={styles.heroImageText}>Image Placeholder (450px height)</span>
+    <div style={homeStyles.heroImage}>
+      <span style={homeStyles.heroImageText}>Hero Image Placeholder</span>
     </div>
   </section>
 );
 
-/* Features Section Component */
+const StatsSection: React.FC = () => (
+  <section style={homeStyles.stats}>
+    <h2 style={homeStyles.sectionTitle}>ClearPath Navigation in Action</h2>
+    <div style={homeStyles.statsGrid}>
+      <div style={homeStyles.statItem}>
+        <div style={homeStyles.statNumber}>9M+</div>
+        <div style={homeStyles.statText}>Optimized Routes Delivered</div>
+      </div>
+      <div style={homeStyles.statItem}>
+        <div style={homeStyles.statNumber}>1/3</div>
+        <div style={homeStyles.statText}>Truckers Trust ClearPath</div>
+      </div>
+      <div style={homeStyles.statItem}>
+        <div style={homeStyles.statNumber}>37M+</div>
+        <div style={homeStyles.statText}>Miles Optimized Daily</div>
+      </div>
+      <div style={homeStyles.statItem}>
+        <div style={homeStyles.statNumber}>450K+</div>
+        <div style={homeStyles.statText}>Community Reports Daily</div>
+      </div>
+    </div>
+  </section>
+);
+
 const FeaturesSection: React.FC = () => {
   const featuresData = [
-    {
-      title: 'Navigation & Traffic',
-      description:
-        'Turn-by-turn directions, real-time traffic updates, and alternate routes tailored for commercial vehicles.',
-    },
-    {
-      title: 'Customizable Route Planning',
-      description:
-        'Input truck dimensions and restrictions to generate routes that avoid low-clearance and restricted areas.',
-    },
-    {
-      title: 'Crowdsourced Hazard Reporting',
-      description:
-        'Drivers report hazards, accidents, and closures—with community voting to ensure accuracy.',
-    },
-    {
-      title: 'Advanced Data Insights',
-      description:
-        'Analyze historical trends, high braking zones, and fleet metrics to optimize performance.',
-    },
-    {
-      title: 'Sensor Integration',
-      description:
-        'Real-time overhead clearance data from roof-mounted sensors for safe passage under low bridges.',
-    },
-    {
-      title: 'Community Communication',
-      description:
-        'Built-in chat and forums let drivers share insights, weather alerts, and route tips.',
-    },
+    "Navigation & Traffic",
+    "Customizable Route Planning",
+    "Crowdsourced Hazard Reporting",
+    "Advanced Data Insights",
+    "Sensor Integration",
+    "Community Communication",
   ];
 
   return (
-    <section id="features" style={styles.features}>
-      <h2 style={styles.sectionTitle}>Key Features</h2>
-      <div style={styles.featureGrid}>
+    <section style={homeStyles.features}>
+      <h2 style={homeStyles.sectionTitle}>Key Features</h2>
+      <div style={homeStyles.featureGrid}>
         {featuresData.map((feature, index) => (
-          <div key={index} style={styles.featureCard}>
-            <div style={styles.featurePlaceholder}>
-              <span style={{ lineHeight: '250px', color: '#888' }}>
-                Image Placeholder (250px height)
-              </span>
+          <div key={index} style={homeStyles.featureCard}>
+            <div style={homeStyles.featurePlaceholder}>
+              <span style={{ lineHeight: "200px", color: "#888" }}>Image Placeholder</span>
             </div>
-            <h3 style={styles.featureTitle}>{feature.title}</h3>
-            <p style={styles.featureDesc}>{feature.description}</p>
+            <h3 style={homeStyles.featureTitle}>{feature}</h3>
           </div>
         ))}
       </div>
@@ -367,63 +70,249 @@ const FeaturesSection: React.FC = () => {
   );
 };
 
-/* About Section Component */
-const AboutSection: React.FC = () => (
-  <section id="about" style={styles.about}>
-    <div style={styles.aboutText}>
-      <h2 style={styles.aboutTitle}>About ClearPath</h2>
-      <p style={styles.aboutDesc}>
-        ClearPath is designed specifically for the trucking industry—addressing unique challenges with truck-specific routing, real-time hazard alerts, and community-driven insights.
-        Our system factors in vehicle dimensions, weight, and restrictions to provide safe and optimized routes for every journey.
-      </p>
-      <p style={styles.aboutDesc}>
-        Leveraging advanced sensor technology and a vibrant driver community, ClearPath ensures that fleet managers and truck drivers always have the information they need to navigate efficiently and safely.
-      </p>
-    </div>
-    <div style={styles.aboutImage}>
-      <span style={styles.aboutImageText}>Image Placeholder (400px height)</span>
-    </div>
-  </section>
-);
+const EnterpriseSolutionsSection: React.FC = () => {
+  const solutionsData = [
+    {
+      icon: "🚚",
+      title: "Industry-Focused Design",
+      description: "Tailored routing and real-time alerts addressing unique trucking challenges.",
+    },
+    {
+      icon: "📡",
+      title: "Advanced Sensor Technology",
+      description: "Utilizes sensor data for accurate overhead clearance and safe navigation.",
+    },
+    {
+      icon: "💬",
+      title: "Community-Driven Insights",
+      description: "Driver community reports hazards and provides route optimization tips.",
+    },
+  ];
 
-/* Call-to-Action (CTA) Section Component */
+  return (
+    <section style={homeStyles.enterprise}>
+      <h2 style={homeStyles.sectionTitle}>About ClearPath</h2>
+      <div style={homeStyles.enterpriseGrid}>
+        {solutionsData.map((solution, index) => (
+          <div key={index} style={homeStyles.enterpriseCard}>
+            <div style={homeStyles.enterpriseIcon}>{solution.icon}</div>
+            <h3 style={homeStyles.enterpriseTitle}>{solution.title}</h3>
+            <p style={homeStyles.enterpriseDesc}>{solution.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
 const CTASection: React.FC = () => (
-  <section id="cta" style={styles.cta}>
-    <h2 style={styles.ctaTitle}>Ready to Transform Your Trucking Experience?</h2>
-    <p style={styles.ctaDesc}>
+  <section style={homeStyles.cta}>
+    <h2 style={homeStyles.ctaTitle}>Ready to Transform Your Trucking Experience?</h2>
+    <p style={homeStyles.ctaDesc}>
       Join thousands of drivers and fleet managers who trust ClearPath for optimized routes, enhanced safety, and real-time updates.
     </p>
-    <button style={styles.ctaButton}>Get Started Now</button>
+    <button style={homeStyles.ctaButton}>Get Started Now</button>
+    <button style={homeStyles.ctaSecondaryButton}>Learn More</button>
   </section>
 );
 
-/* Footer Component */
-const Footer: React.FC = () => (
-  <footer id="footer" style={styles.footer}>
-    <div style={styles.footerLinks}>
-      <a style={styles.footerLink} href="#privacy">Privacy Policy</a>
-      <a style={styles.footerLink} href="#terms">Terms of Service</a>
-      <a style={styles.footerLink} href="#contact">Contact Us</a>
-    </div>
-    <p>&copy; {new Date().getFullYear()} ClearPath. All Rights Reserved.</p>
-  </footer>
-);
-
-/* Main HomePage Component */
-const HomePage: React.FC = () => {
+const Home: React.FC = () => {
   return (
-    <div style={styles.body}>
-      <div style={styles.container}>
-        <Header />
-        <HeroSection />
-        <FeaturesSection />
-        <AboutSection />
-        <CTASection />
-        <Footer />
-      </div>
+    <div style={homeStyles.body}>
+      <Navbar />
+      <HeroSection />
+      <StatsSection />
+      <FeaturesSection />
+      <EnterpriseSolutionsSection />
+      <CTASection />
+      <Footer />
     </div>
   );
 };
 
-export default HomePage;
+export default Home;
 
+const homeStyles = {
+  body: {
+    margin: 0,
+    fontFamily: "'Roboto', sans-serif",
+    backgroundColor: "#fff",
+    color: "#333",
+    minHeight: "100vh",
+    overflowY: "auto" as const,
+  },
+  hero: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "120px 60px",
+    background: "linear-gradient(135deg, #2271b1 0%, #4CAF50 100%)",
+    color: "#fff",
+  },
+  heroText: {
+    maxWidth: "50%",
+  },
+  heroTitle: {
+    fontSize: "56px",
+    fontWeight: 700,
+    marginBottom: "20px",
+  },
+  heroSubtitle: {
+    fontSize: "22px",
+    lineHeight: 1.5,
+    marginBottom: "40px",
+  },
+  heroButton: {
+    fontSize: "20px",
+    padding: "18px 36px",
+    backgroundColor: "#fff",
+    color: "#2271b1",
+    border: "none",
+    borderRadius: "8px",
+    cursor: "pointer",
+  },
+  heroImage: {
+    width: "45%",
+    height: "450px",
+    backgroundColor: "#4CAF50",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "10px",
+  },
+  heroImageText: {
+    fontSize: "18px",
+    color: "#fff",
+  },
+  stats: {
+    padding: "100px 60px",
+    backgroundColor: "#f5f5f5",
+    textAlign: "center" as const,
+  },
+  statsGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gap: "40px",
+    marginTop: "60px",
+  },
+  statItem: {
+    textAlign: "center" as const,
+  },
+  statNumber: {
+    fontSize: "48px",
+    fontWeight: 700,
+    color: "#2271b1",
+    marginBottom: "10px",
+  },
+  statText: {
+    fontSize: "18px",
+    color: "#555",
+  },
+  features: {
+    padding: "100px 60px",
+    backgroundColor: "#fff",
+  },
+  sectionTitle: {
+    textAlign: "center" as const,
+    fontSize: "42px",
+    fontWeight: 600,
+    marginBottom: "60px",
+    color: "#333",
+  },
+  featureGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+    gap: "40px",
+  },
+  featureCard: {
+    padding: "30px",
+    backgroundColor: "#f9f9f9",
+    borderRadius: "10px",
+    textAlign: "center" as const,
+    transition: "transform 0.3s ease",
+    cursor: "pointer",
+  },
+  featurePlaceholder: {
+    width: "100%",
+    height: "200px",
+    backgroundColor: "#ddd",
+    marginBottom: "20px",
+    borderRadius: "8px",
+  },
+  featureTitle: {
+    fontSize: "24px",
+    fontWeight: 600,
+    marginBottom: "10px",
+    color: "#2271b1",
+  },
+  enterprise: {
+    padding: "100px 60px",
+    backgroundColor: "#0a1929",
+    color: "#fff",
+  },
+  enterpriseGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: "40px",
+    marginTop: "60px",
+  },
+  enterpriseCard: {
+    padding: "30px",
+    backgroundColor: "#0f2942",
+    borderRadius: "10px",
+  },
+  enterpriseIcon: {
+    fontSize: "36px",
+    marginBottom: "20px",
+    color: "#4CAF50",
+  },
+  enterpriseTitle: {
+    fontSize: "24px",
+    fontWeight: 600,
+    marginBottom: "15px",
+  },
+  enterpriseDesc: {
+    fontSize: "16px",
+    lineHeight: 1.6,
+    color: "#bbb",
+  },
+  cta: {
+    padding: "100px 60px",
+    backgroundColor: "#2271b1",
+    color: "#fff",
+    textAlign: "center" as const,
+  },
+  ctaTitle: {
+    fontSize: "42px",
+    fontWeight: 700,
+    marginBottom: "20px",
+  },
+  ctaDesc: {
+    fontSize: "20px",
+    lineHeight: 1.5,
+    marginBottom: "40px",
+    maxWidth: "800px",
+    margin: "0 auto 40px",
+  },
+  ctaButton: {
+    padding: "18px 36px",
+    backgroundColor: "#fff",
+    color: "#2271b1",
+    border: "none",
+    borderRadius: "8px",
+    fontSize: "20px",
+    fontWeight: 600,
+    cursor: "pointer",
+    marginRight: "20px",
+  },
+  ctaSecondaryButton: {
+    padding: "16px 34px",
+    backgroundColor: "transparent",
+    color: "#fff",
+    border: "2px solid #fff",
+    borderRadius: "8px",
+    fontSize: "20px",
+    fontWeight: 600,
+    cursor: "pointer",
+  },
+};
