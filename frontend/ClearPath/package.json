@@ -16,6 +16,8 @@
   },
   "private": true,
   "dependencies": {
-    "expo-linear-gradient": "~14.0.2"
+    "@expo/vector-icons": "^14.0.4",
+    "expo-linear-gradient": "~14.0.2",
+    "react-native-maps": "^1.20.1"
   }
 }

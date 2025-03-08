@@ -10,3 +10,6 @@ git checkout branchname
 install the npm install expo-linear-gradient for product page css, in ClearPath/frontend/ClearPath/
 
 also need to update layout.tsx and finish the product side and the whole company side
+
+note from 3/8/25
+install the npm install react-native-maps, in ClearPath/frontend/ClearPath/ and npm install @expo/vector-icons 

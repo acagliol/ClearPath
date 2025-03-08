@@ -6,24 +6,44 @@ import {
   TouchableOpacity, 
   StyleSheet 
 } from 'react-native';
+import { Ionicons, MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
 
 const Navbar = () => {
   return (
     <View style={styles.header}>
       <View style={styles.logoContainer}>
         <Image 
-          source={{ uri: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-lvDiL3k5kzfPMaNxVHd7LnJDS5vuFC.png' }} 
+          source={{ uri: '' }} 
           style={styles.logo}
           resizeMode="contain"
         />
       </View>
 
       <View style={styles.navContainer}>
-        <Text style={styles.navItem}>Map</Text>
-        <Text style={styles.navItem}>Dispatch</Text>
-        <Text style={styles.navItem}>Loadboard</Text>
-        <Text style={styles.navItem}>Fuel</Text>
-        <Text style={styles.navItem}>Accounting</Text>
+        <TouchableOpacity style={styles.navItemContainer}>
+          <Ionicons name="map-outline" size={16} color="#3366ff" style={styles.navIcon} />
+          <Text style={[styles.navItem, styles.activeNavText]}>Map</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.navItemContainer}>
+          <MaterialIcons name="dashboard-customize" size={16} color="#555555" style={styles.navIcon} />
+          <Text style={styles.navItem}>Dispatch</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.navItemContainer}>
+          <FontAwesome5 name="truck-loading" size={16} color="#555555" style={styles.navIcon} />
+          <Text style={styles.navItem}>Loadboard</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.navItemContainer}>
+          <FontAwesome5 name="gas-pump" size={16} color="#555555" style={styles.navIcon} />
+          <Text style={styles.navItem}>Fuel</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.navItemContainer}>
+          <MaterialIcons name="account-balance" size={16} color="#555555" style={styles.navIcon} />
+          <Text style={styles.navItem}>Accounting</Text>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.authContainer}>
@@ -62,10 +82,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
   },
-  navItem: {
+  navItemContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     marginHorizontal: 8,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    borderRadius: 4,
+  },
+  navIcon: {
+    marginRight: 4,
+  },
+  navItem: {
     fontSize: 14,
     color: '#555555',
+  },
+  activeNavText: {
+    color: '#3366ff',
+    fontWeight: '500',
   },
   authContainer: {
     flexDirection: 'row',

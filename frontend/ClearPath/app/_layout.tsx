@@ -22,7 +22,7 @@ export default function RootLayout() {
       {/* Maps "app/product/index.tsx" to "product/index" route 
           But sets a custom title, so it won't show "product/index" in the header */}
       <Stack.Screen
-        name="product/home"
+        name="product/product"
         options={{
           headerShown: false,
           title: "Product", // <--- This overrides the default label
